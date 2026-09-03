@@ -1,0 +1,214 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "b6e7c4bb-84b8-4bee-a7b8-d72b44877b78",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "orders = [\n",
+    "    {\"customer\":\"Ahmet\", \"items\": [\"Laptop\",\"Mouse\",\"Mouse\"], \"total\":18500, \"is_paid\":True},\n",
+    "    {\"customer\":\"Zeynep\", \"items\": [\"Keyboard\"], \"total\":2500, \"is_paid\":False},\n",
+    "    {\"customer\":\"Mehmet\", \"items\": [\"Monitor\",\"HDMI Cable\",\"Monitor\"], \"total\":7200, \"is_paid\":True},\n",
+    "    {\"customer\":\"Mehmet\", \"items\": [\"Monitor\",\"HDMI Cable\",\"Monitor\"], \"total\":7200, \"is_paid\":True}\n",
+    "]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "07af7d18-fc33-448c-9a9d-44fd46c7cae2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Total Orders: 4\n",
+      "Paid: 3, Unpaid: 1\n"
+     ]
+    }
+   ],
+   "source": [
+    "total_orders = len(orders)\n",
+    "paid_count = 0\n",
+    "unpaid_count = 0\n",
+    "\n",
+    "\n",
+    "if orders[0][\"is_paid\"]: \n",
+    "    paid_count += 1\n",
+    "else: \n",
+    "    unpaid_count += 1\n",
+    "\n",
+    "if orders[1][\"is_paid\"]: \n",
+    "    paid_count += 1\n",
+    "else: \n",
+    "    unpaid_count += 1\n",
+    "\n",
+    "if orders[2][\"is_paid\"]: \n",
+    "    paid_count += 1\n",
+    "else: \n",
+    "    unpaid_count += 1\n",
+    "\n",
+    "if orders[3][\"is_paid\"]: \n",
+    "    paid_count += 1\n",
+    "else: \n",
+    "    unpaid_count += 1\n",
+    "\n",
+    "print(f\"Total Orders: {total_orders}\")\n",
+    "print(f\"Paid: {paid_count}, Unpaid: {unpaid_count}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "bf7712f2-e321-40cd-b45a-335df9259418",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Unique Customers: ['Ahmet', 'Mehmet', 'Zeynep']\n",
+      "Number of Unique Customers: 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "customer_names = [\n",
+    "    orders[0][\"customer\"], \n",
+    "    orders[1][\"customer\"], \n",
+    "    orders[2][\"customer\"], \n",
+    "    orders[3][\"customer\"]\n",
+    "]\n",
+    "\n",
+    "\n",
+    "unique_customers = list(set(customer_names))\n",
+    "\n",
+    "print(f\"Unique Customers: {unique_customers}\")\n",
+    "print(f\"Number of Unique Customers: {len(unique_customers)}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "b018e12c-eddb-4e89-beb0-f7defcfbbf74",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Mehmet's unique items: {'Monitor', 'HDMI Cable'}\n",
+      "Total unique items: 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "mehmet_items = orders[2][\"items\"]\n",
+    "\n",
+    "\n",
+    "unique_items = set(mehmet_items)\n",
+    "\n",
+    "print(f\"Mehmet's unique items: {unique_items}\")\n",
+    "print(f\"Total unique items: {len(unique_items)}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "b17972b1-388a-45a1-ba49-0af3a36677c6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "--- DAY 2 SUMMARY REPORT ---\n",
+      "Total System Orders: {total_orders}\n",
+      "Active Unique Customers: {len(unique_customers)}\n",
+      "Pending Payments: {unpaid_count}\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(\"--- DAY 2 SUMMARY REPORT ---\")\n",
+    "print(\"Total System Orders: {total_orders}\")\n",
+    "print(\"Active Unique Customers: {len(unique_customers)}\")\n",
+    "print(\"Pending Payments: {unpaid_count}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4cc7d485-5d5f-48af-8e71-3ac62a3b93a3",
+   "metadata": {},
+   "source": [
+    "Project Report: Smart Order Management System                                                                                                          1. Introduction\n",
+    "The objective of this project is to analyze and process e-commerce transaction data using Python's core collection structures. In this second phase of the bootcamp, the focus shifted from basic string manipulation to handling structured data—specifically Lists of Dictionaries. The goal was to extract meaningful insights, such as payment status and customer demographics, without relying on iteration (loops), thereby strengthening my understanding of manual indexing and logical control flows.\n",
+    "\n",
+    "2. Core Python Concepts Applied\n",
+    "In this project, several fundamental data structures were utilized to manage the complexity of the order data:\n",
+    "\n",
+    "Dictionaries (Dict): Used to represent individual orders as key-value pairs (e.g., customer, total, is_paid). This allowed for intuitive data access.\n",
+    "\n",
+    "Lists: Served as the primary container for storing multiple order dictionaries, enabling the management of a sequential data stream.\n",
+    "\n",
+    "Sets: A critical component for data de-duplication. By converting lists to sets, I was able to automatically filter out redundant entries, such as duplicate customer names or recurring items in a single basket.\n",
+    "\n",
+    "Control Flow (If-Else): Used to implement decision-making logic to categorize orders based on their payment status.\n",
+    "\n",
+    "Type Properties: I utilized the inherent properties of collections, such as len() for counting and membership testing, to validate the integrity of the data.\n",
+    "\n",
+    "3. Data Processing Methodology\n",
+    "Data Integrity Issues\n",
+    "The raw dataset presented two primary challenges:\n",
+    "\n",
+    "Redundancy: One customer (Mehmet) appeared multiple times in the system, which could lead to an inflated \"active user\" count.\n",
+    "\n",
+    "Unstructured Totals: Payment statuses were stored as Booleans, requiring logical conversion to be presented in a human-readable summary.\n",
+    "\n",
+    "Implementation Steps\n",
+    "Manual Indexing: Since loops were restricted, I accessed each order via its index (orders[0], orders[1], etc.). This approach highlights the importance of understanding the 0-indexed nature of Python collections.\n",
+    "\n",
+    "Categorization: I developed a counter system using if-else blocks to track paid_count and unpaid_count, simulating a basic database query.\n",
+    "\n",
+    "De-duplication Logic: To identify unique customers, I extracted all names into a list and cast them into a set. This ensured that even if a user shopped ten times, they were only counted as one unique entity.\n",
+    "\n",
+    "4. Discussion and Conclusion\n",
+    "This project demonstrates the transition from simple data storage to basic data analysis. By avoiding loops, I gained a deeper appreciation for how Python handles memory and indexing behind the scenes.\n",
+    "\n",
+    "Key Learnings:\n",
+    "\n",
+    "Data Accuracy: I learned that \"Total Orders\" and \"Unique Customers\" are different metrics, and Python sets are the most efficient way to distinguish between them.\n",
+    "\n",
+    "Real-World Application: This logic is the foundation of modern e-commerce dashboards, where filtering unique visitors and pending payments is a daily requirement for business operations.\n",
+    "\n",
+    "Scalability: While manual indexing worked for four orders, this project highlighted the eventual necessity of automation (loops/functions) for larger datasets, which will be the focus of the upcoming sessions."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,226 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "8e461cdf-7530-490f-9256-dec061b77153",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "raw_data =\"  AhMeT  yILMAZ ;  23 ;  1.78 ;  ahmetYILMAZ@GMAIL.Com   \"\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "2fb65ff2-03a1-4546-b19a-92a30a47bf8f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "parts = raw_data.strip().split(' ; ') \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "20c540d5-faa7-4900-8c73-d935b23a5434",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "['AhMeT  yILMAZ', ' 23', ' 1.78', ' ahmetYILMAZ@GMAIL.Com']\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(parts)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "90f004bb-05cb-4baf-bd31-16165b3178ee",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Ahmet  Yilmaz\n"
+     ]
+    }
+   ],
+   "source": [
+    "full_name = parts[0].strip().title()\n",
+    "print(full_name)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "7aa1658a-63f3-48df-ab44-cdaf8a42d2ea",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "33.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "age_future = float(int(parts[1] )+ 10)\n",
+    "print(age_future)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "b98fc2b4-bd67-42ef-b0da-6506add70a38",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "178.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "height_cm = float(parts[2]) * 100\n",
+    "print(height_cm)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "79431ab6-afb6-450e-9a9a-1e40d5649701",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ahmetyilmaz@gmail.com\n",
+      "ahm\n"
+     ]
+    }
+   ],
+   "source": [
+    "email_cleaned = parts[3].strip().lower()\n",
+    "user_code = email_cleaned[:3]\n",
+    "print(email_cleaned)\n",
+    "print(user_code)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "9d18e7c0-d704-4198-a47d-6ee7f145e78d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "user:  Ahmet  Yilmaz\n",
+      "age:  33.0\n",
+      "height:  178.0\n",
+      "final email:  ahmetyilmaz@gmail.com\n",
+      "user code:  ahm\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('user: ', full_name )\n",
+    "print('age: ', age_future)\n",
+    "print( 'height: ', height_cm)\n",
+    "print( 'final email: ', email_cleaned)\n",
+    "print( 'user code: ', user_code)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c7a5fb35-c84e-4841-89b5-a27bf31b60f0",
+   "metadata": {},
+   "source": [
+    "Smart Data Cleaner Technical Report\n",
+    "### 1. Introduction\n",
+    "\n",
+    "The main objective of this project is to standardize unstructured and “dirty” data obtained from external sources (such as forms, surveys, or raw text files) by utilizing Python’s text processing capabilities. In data science, the principle of *“Garbage In, Garbage Out”* applies. Therefore, cleaning the data before moving on to the analysis stage is crucial for the accuracy and sustainability of the system.\n",
+    "\n",
+    "---\n",
+    "\n",
+    "### 2. Python Concepts Used\n",
+    "\n",
+    "While implementing the project, the following concepts were used within a logical framework:\n",
+    "\n",
+    "* **Variables:** After splitting the raw data into parts, variables were used to store each piece of information (name, age, height) in memory and to perform independent operations on them.\n",
+    "\n",
+    "* **String Data Type and Methods:** Used to manipulate text-based data.\n",
+    "\n",
+    "  * `strip()` removed surrounding noise (whitespace),\n",
+    "  * `split()` transformed complex structures into meaningful components,\n",
+    "  * `title()` and `lower()` ensured visual consistency.\n",
+    "\n",
+    "* **String Slicing:** Used to focus on a specific part of a data group (e.g., extracting the user code from an email address) and retrieve it precisely.\n",
+    "\n",
+    "* **Type Conversions (int/float):** Numeric values initially interpreted as text were converted into numerical formats to enable mathematical operations (such as age calculations or unit conversions for height).\n",
+    "\n",
+    "---\n",
+    "\n",
+    "### 3. Data Cleaning Process\n",
+    "\n",
+    "**Problems in Raw Data:**\n",
+    "The raw data contained inconsistent use of uppercase and lowercase letters, unnecessary spaces, and numerical values embedded within text. In this form, the data could neither be stored in a database nor used for mathematical analysis.\n",
+    "\n",
+    "**Applied Solutions:**\n",
+    "\n",
+    "* **Parsing:** The data was split using semicolons (`;`) as separators.\n",
+    "* **Normalization:** Irregular letter patterns in names were converted into a standardized format (Title Case).\n",
+    "* **Error Handling:** Whitespace around numerical data was removed to prevent type errors (*ValueError*).\n",
+    "* **Data Derivation:** A new “user code” was generated from raw email data using slicing techniques.\n",
+    "\n",
+    "**Impact of Dirty Data:**\n",
+    "If uncleaned data is entered into the system, it may result in recording the same person under different names (e.g., *Ahmet* vs *AHMeT*), cause the program to crash during age calculations, or produce incorrect results in height/weight analyses.\n",
+    "\n",
+    "---\n",
+    "\n",
+    "### 4. Conclusion and Evaluation\n",
+    "\n",
+    "This project demonstrated how Python’s built-in methods can efficiently transform complex data without requiring complicated loops or control structures.\n",
+    "\n",
+    "**Skills Acquired:**\n",
+    "\n",
+    "* Ability to analyze and break down raw data\n",
+    "* Understanding the differences between data types and the importance of type conversion\n",
+    "* Applying practical Python solutions to real-world scenarios (e.g., e-commerce records, user data normalization)\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.13.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
